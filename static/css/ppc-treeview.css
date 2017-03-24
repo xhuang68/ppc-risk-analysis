@@ -1,0 +1,95 @@
+/*hide web browser scrollbar in every componet*/
+::-webkit-scrollbar {
+    display: none;
+}
+
+.ppc-treeview ul,
+.ppc-treeview li
+{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.ppc-treeview input
+{
+    position: absolute;
+    opacity: 0;
+}
+
+.ppc-treeview
+{
+    font: normal 11px "Segoe UI", Arial, Sans-serif;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.ppc-treeview a
+{
+    color: #263343;
+    text-decoration: none;
+}
+
+.ppc-treeview a:hover
+{
+    text-decoration: underline;
+}
+
+.ppc-treeview input + label + ul
+{
+    margin: 0 0 0 22px;
+}
+
+.ppc-treeview input ~ ul
+{
+    display: none;
+}
+
+.ppc-treeview label
+{
+    cursor: pointer;
+}
+
+.ppc-treeview input:disabled + label
+{
+    cursor: default;
+    opacity: .6;
+}
+
+.ppc-treeview input:checked:not(:disabled) ~ ul
+{
+    display: block;
+}
+
+.ppc-treeview label,
+.ppc-treeview a
+{
+    background: url("../img/icon.png") no-repeat;
+}
+
+.ppc-treeview label,
+.ppc-treeview a
+{
+    display: inline-block;
+    height: 16px;
+    line-height: 16px;
+    vertical-align: middle;
+}
+
+.ppc-treeview label
+{
+    padding-left: 35px;
+    background-position: 0 -18px;
+}
+
+.ppc-treeview a
+{
+  padding-left: 35px;
+  background-position: 0 -38px;
+}
+
+.ppc-treeview input:checked + label
+{
+    background-position: 0 2px;
+}

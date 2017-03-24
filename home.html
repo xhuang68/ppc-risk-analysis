@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+
+    <!-- import Bootstrap css -->
+    <link rel="stylesheet" href="./static/css/bootstrap.min.css">
+
+    <!-- import ppc-treeview css -->
+    <link rel="stylesheet" href="./static/css/ppc-treeview.css">
+
+    <!-- import jQuery & jQuery-contextMenu -->
+    <script src="./static/plugins/jquery-1.11.3/jquery.min.js"></script>
+
+    <link href="./static/plugins/jQuery-contextMenu/jquery.contextMenu.min.css" rel="stylesheet" type="text/css" />
+    <script src="./static/plugins/jQuery-contextMenu/jquery.contextMenu.min.js" type="text/javascript"></script>
+    <script src="./static/plugins/jQuery-contextMenu/jquery.ui.position.min.js" type="text/javascript"></script>
+    <script src="./static/plugins/jQuery-contextMenu/main.js" type="text/javascript"></script>
+
+    <!-- import Bootstrap js -->
+    <script src="./static/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+    <div id="home-wrapper" style="height:512px;width:768px;margin:0 auto;border:1px solid #999999;">
+        <div class="ppc-risk-analysis-header" style="height:10%;border-bottom:1px solid #999999;padding:10px;">
+          <button class="btn btn-default btn-sm" type="button" name="button" onclick="handleBasicInfo()">基本信息</button>
+          <button class="btn btn-default btn-sm" type="button" name="button" onclick="handleDictEdit()">编辑字典</button>
+          <button class="btn btn-default btn-sm" type="button" name="button" onclick="handleAddRoot()">添加根数据</button>
+          <button class="btn btn-default btn-sm" type="button" name="button" onclick="handleExport()">导出</button>
+        </div>
+        <div class="ppc-risk-analysis-content-wrapper" style="height:90%;vertical-align:top;">
+
+            <div class="col-sm-6" style="border-right:1px dashed #999999;width:50%;height:100%;overflow:scroll;display:inline;padding-top:10px;">
+              <div class="ppc-treeview" style="width:100%">
+                <ul id="ppc-node">
+                  <li class="ppc-treeview-node"><input type="checkbox" id="item-0" class="level-1" /><label for="item-0">01 系统1</label>
+                      <ul>
+                          <li class="ppc-treeview-node"><input type="checkbox" id="item-0-0" class="level-2" /><label for="item-0-0">01 功能分区与布置</label>
+                              <ul>
+                                  <li class="ppc-treeview-node"><input type="checkbox" id="item-0-0-0" class="level-3" /><label for="item-0-0-0">01 主工艺区</label>
+                                      <ul>
+                                          <li class="ppc-treeview-leaf"><a href="./">First Nested Item</a></li>
+                                          <li class="ppc-treeview-leaf"><a href="./">Second Nested Item</a></li>
+                                          <li class="ppc-treeview-leaf"><a href="./">Third Nested Item</a></li>
+                                          <li class="ppc-treeview-leaf"><a href="./">Fourth Nested Item</a></li>
+                                      </ul>
+                                  </li>
+                                  <li class="ppc-treeview-node"><input type="checkbox" id="item-0-0-1" class="level-3" /><label for="item-0-0-1">02 辅助工艺区</label>
+                                      <ul>
+                                          <li class="ppc-treeview-leaf"><a href="./">First Nested Item</a></li>
+                                          <li class="ppc-treeview-leaf"><a href="./">Second Nested Item</a></li>
+                                          <li class="ppc-treeview-leaf"><a href="./">Third Nested Item</a></li>
+                                          <li class="ppc-treeview-leaf"><a href="./">Fourth Nested Item</a></li>
+                                      </ul>
+                                  </li>
+                                  <li class="ppc-treeview-node"><input type="checkbox" id="item-0-0-2" class="level-3" /><label for="item-0-0-2">03 人流控制区</label>
+                                      <ul>
+                                          <li class="ppc-treeview-leaf"><a href="./">First Nested Item</a></li>
+                                          <li class="ppc-treeview-leaf"><a href="./">Second Nested Item</a></li>
+                                          <li class="ppc-treeview-leaf"><a href="./">Third Nested Item</a></li>
+                                          <li class="ppc-treeview-leaf"><a href="./">Fourth Nested Item</a></li>
+                                      </ul>
+                                  </li>
+                                  <li class="ppc-treeview-node"><input type="checkbox" id="item-0-0-3" class="level-3" /><label for="item-0-0-3">04 物流控制区</label>
+                                      <ul>
+                                          <li class="ppc-treeview-leaf"><a href="./">First Nested Item</a></li>
+                                          <li class="ppc-treeview-leaf"><a href="./">Second Nested Item</a></li>
+                                          <li class="ppc-treeview-leaf"><a href="./">Third Nested Item</a></li>
+                                          <li class="ppc-treeview-leaf"><a href="./">Fourth Nested Item</a></li>
+                                      </ul>
+                                  </li>
+                                  <li class="ppc-treeview-leaf"><a href="./">Item 1</a></li>
+                                  <li class="ppc-treeview-leaf"><a href="./">Item 2</a></li>
+                                  <li class="ppc-treeview-leaf"><a href="./">Item 3</a></li>
+                              </ul>
+                          </li>
+                          <li class="ppc-treeview-node"><input type="checkbox" id="item-0-1" class="level-2" /><label for="item-0-1">02 技术系统</label>
+                              <ul>
+                                <li class="ppc-treeview-node"><input type="checkbox" id="item-0-1-0" class="level-3" /><label for="item-0-1-0">01 空调系统</label>
+                                    <ul>
+                                        <li class="ppc-treeview-leaf"><a href="./">First Nested Item</a></li>
+                                        <li class="ppc-treeview-leaf"><a href="./">Second Nested Item</a></li>
+                                        <li class="ppc-treeview-leaf"><a href="./">Third Nested Item</a></li>
+                                        <li class="ppc-treeview-leaf"><a href="./">Fourth Nested Item</a></li>
+                                    </ul>
+                                </li>
+                                <li class="ppc-treeview-node"><input type="checkbox" id="item-0-1-1" class="level-3" /><label for="item-0-1-1">02 传递窗</label>
+                                    <ul>
+                                        <li class="ppc-treeview-leaf"><a href="./">First Nested Item</a></li>
+                                        <li class="ppc-treeview-leaf"><a href="./">Second Nested Item</a></li>
+                                        <li class="ppc-treeview-leaf"><a href="./">Third Nested Item</a></li>
+                                        <li class="ppc-treeview-leaf"><a href="./">Fourth Nested Item</a></li>
+                                    </ul>
+                                </li>
+                                <li class="ppc-treeview-leaf"><a href="./">item</a></li>
+                                <li class="ppc-treeview-leaf"><a href="./">item</a></li>
+                                <li class="ppc-treeview-leaf"><a href="./">item</a></li>
+                              </ul>
+                          </li>
+                          <li class="ppc-treeview-node"><input type="checkbox" id="item-0-2" class="level-2" /><label for="item-0-2">03 控制与管理程序</label>
+                              <ul>
+                                <li class="ppc-treeview-node"><input type="checkbox" id="item-0-2-0" class="level-3" /><label for="item-0-2-0">01 人流更衣程序</label>
+                                    <ul>
+                                        <li class="ppc-treeview-leaf"><a href="./">First Nested Item</a></li>
+                                        <li class="ppc-treeview-leaf"><a href="./">Second Nested Item</a></li>
+                                        <li class="ppc-treeview-leaf"><a href="./">Third Nested Item</a></li>
+                                        <li class="ppc-treeview-leaf"><a href="./">Fourth Nested Item</a></li>
+                                    </ul>
+                                </li>
+                                <li class="ppc-treeview-node"><input type="checkbox" id="item-0-2-1" class="level-3" /><label for="item-0-2-1">02 物流进出程序</label>
+                                    <ul>
+                                        <li class="ppc-treeview-leaf"><a href="./">First Nested Item</a></li>
+                                        <li class="ppc-treeview-leaf"><a href="./">Second Nested Item</a></li>
+                                        <li class="ppc-treeview-leaf"><a href="./">Third Nested Item</a></li>
+                                        <li class="ppc-treeview-leaf"><a href="./">Fourth Nested Item</a></li>
+                                    </ul>
+                                </li>
+                                <li class="ppc-treeview-leaf"><a href="./">item</a></li>
+                                <li class="ppc-treeview-leaf"><a href="./">item</a></li>
+                                <li class="ppc-treeview-leaf"><a href="./">item</a></li>
+                              </ul>
+                          </li>
+                          <li class="ppc-treeview-node"><input type="checkbox" id="item-0-3" class="level-2" /><label for="item-0-3">04 文件</label>
+                              <ul>
+                                <li class="ppc-treeview-node"><input type="checkbox" id="item-0-3-0" class="level-3" /><label for="item-0-3-0">01 URS</label>
+                                    <ul>
+                                        <li class="ppc-treeview-leaf"><a href="./">First Nested Item</a></li>
+                                        <li class="ppc-treeview-leaf"><a href="./">Second Nested Item</a></li>
+                                        <li class="ppc-treeview-leaf"><a href="./">Third Nested Item</a></li>
+                                        <li class="ppc-treeview-leaf"><a href="./">Fourth Nested Item</a></li>
+                                    </ul>
+                                </li>
+                                <li class="ppc-treeview-leaf"><a href="./">item</a></li>
+                                <li class="ppc-treeview-leaf"><a href="./">item</a></li>
+                                <li class="ppc-treeview-leaf"><a href="./">item</a></li>
+                              </ul>
+                          </li>
+                          <li class="ppc-treeview-leaf"><a href="./">item</a></li>
+                          <li class="ppc-treeview-leaf"><a href="./">item</a></li>
+                          <li class="ppc-treeview-leaf"><a href="./">item</a></li>
+                          <li class="ppc-treeview-leaf"><a href="./">item</a></li>
+                      </ul>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="col-sm-6" style="width:50%;height:100%;display:inline;vertical-align:top;padding-top:10px;overflow:scroll;">
+              <div class="list-group">
+                <a href="./analysis.html" class="list-group-item">
+                  <p class="list-group-item-heading">功能名称</p>
+                  <hr style="margin:0;">
+                  <p class="list-group-item-text">风险水平 <span style="margin-left:52px;font-size:20px;font-weight:500;">高 RL >= 2</span> </p>
+                  <p class="list-group-item-text">措施后风险水平 <span style="margin-left:10px;font-size:20px;font-weight:500;">低 RL <= 2</span> </p>
+                </a>
+              </div>
+              <div class="list-group">
+                <a href="./analysis.html" class="list-group-item">
+                  <p class="list-group-item-heading">功能名称</p>
+                  <hr style="margin:0;">
+                  <p class="list-group-item-text">风险水平 <span style="margin-left:52px;font-size:20px;font-weight:500;">高 RL >= 2</span> </p>
+                  <p class="list-group-item-text">措施后风险水平 <span style="margin-left:10px;font-size:20px;font-weight:500;">低 RL <= 2</span> </p>
+                </a>
+              </div>
+              <div class="list-group">
+                <a href="./analysis.html" class="list-group-item active">
+                  <p class="list-group-item-heading">功能名称</p>
+                  <hr style="margin:0;">
+                  <p class="list-group-item-text">风险水平 <span style="margin-left:52px;font-size:20px;font-weight:500;">高 RL >= 2</span> </p>
+                  <p class="list-group-item-text">措施后风险水平 <span style="margin-left:10px;font-size:20px;font-weight:500;">低 RL <= 2</span> </p>
+                </a>
+              </div>
+              <div class="list-group">
+                <a href="./analysis.html" class="list-group-item">
+                  <p class="list-group-item-heading">功能名称</p>
+                  <hr style="margin:0;">
+                  <p class="list-group-item-text">风险水平 <span style="margin-left:52px;font-size:20px;font-weight:500;">高 RL >= 2</span> </p>
+                  <p class="list-group-item-text">措施后风险水平 <span style="margin-left:10px;font-size:20px;font-weight:500;">低 RL <= 2</span> </p>
+                </a>
+              </div>
+              <div class="list-group">
+                <a href="./analysis.html" class="list-group-item">
+                  <p class="list-group-item-heading">功能名称</p>
+                  <hr style="margin:0;">
+                  <p class="list-group-item-text">风险水平 <span style="margin-left:52px;font-size:20px;font-weight:500;">高 RL >= 2</span> </p>
+                  <p class="list-group-item-text">措施后风险水平 <span style="margin-left:10px;font-size:20px;font-weight:500;">低 RL <= 2</span> </p>
+                </a>
+              </div>
+              <div class="list-group">
+                <a href="./analysis.html" class="list-group-item">
+                  <p class="list-group-item-heading">功能名称</p>
+                  <hr style="margin:0;">
+                  <p class="list-group-item-text">风险水平 <span style="margin-left:52px;font-size:20px;font-weight:500;">高 RL >= 2</span> </p>
+                  <p class="list-group-item-text">措施后风险水平 <span style="margin-left:10px;font-size:20px;font-weight:500;">低 RL <= 2</span> </p>
+                </a>
+              </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ppc-treeview 组件 js 代码 -->
+    <script src="./static/js/ppc-treeview.js"></script>
+
+    <!-- 事件处理器代码 -->
+    <script type="text/javascript">
+      function handleBasicInfo(){
+        // TODO: 传递数据到基本信息页面
+        location.href = './info.html';
+      }
+
+      function handleExport(){
+        // TODO: 导出设置
+      }
+
+      function handleAddRoot(){
+        var context = $("#ppc-node").children().last();
+        if (context.length) {
+          addSameLevelHandler(context);
+        } else {
+          var promptName = '新建 level-1 文件';
+          var newName = prompt('请输入新名字', promptName);
+          var newNodeId = Date.now();
+          var newHtml;
+          newHtml = '<li class="ppc-treeview-node"><input type="checkbox" id="' + newNodeId.toString() + '" class="level-1" /><label for="' + newNodeId.toString() + '">' + newName + '</label><ul></ul></li>'
+          if (newName != null && newName != "") {
+            $("#ppc-node").html(newHtml);
+          }
+        }
+      }
+
+      function handleDictEdit(){
+        // TODO: 传递数据到字典编辑页面
+      }
+    </script>
+</body>
+
+</html>
