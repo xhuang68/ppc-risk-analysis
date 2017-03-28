@@ -20,123 +20,108 @@
     <div id="info-wrapper" style="height:512px;width:768px;margin:0 auto;border:1px solid #999999;overflow:scroll;">
 
       <div class="info-header" style="width:768px;height:40px;line-height:40px;padding-left:20px;background:rgba(153, 204, 255, 0.8);position:fixed;z-index:2;">
-        <div class="dropdown" style="display:inline-block;">
-          <button id="dLabel" class="btn btn-default btn-sm" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            新建条目
-            <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu" aria-labelledby="dLabel">
-            <li><a href="#" onclick="addNewItem(0)">空白模板</a></li>
-            <li><a href="#" onclick="addNewItem(1)"=>模板名称1</a></li>
-            <li><a href="#" onclick="addNewItem(2)">模板名称2</a></li>
-            <li><a href="#" onclick="addNewItem(3)">模板名称3</a></li>
-          </ul>
-        </div>
-        <button class="btn btn-default btn-sm" type="button" name="button" onclick="handleSubmit()">提交</button>
-        <button class="btn btn-default btn-sm" type="button" name="button" onclick="handleReturn()">返回</button>
+        <p style="display:inline-block;font-weight:bolder;">条目 1</p>
+        <button class="btn btn-default btn-sm" type="button" name="button" onclick="handleReturn()" style="float:right;margin-top:5px;margin-right:20px;">返回</button>
+        <button class="btn btn-default btn-sm" type="button" name="button" onclick="handleDelete()" style="float:right;margin-top:5px;margin-right:10px;">删除</button>
+        <button class="btn btn-default btn-sm" type="button" name="button" onclick="handleSubmit()" style="float:right;margin-top:5px;margin-right:10px;">提交</button>
       </div>
 
-      <div class="info-panels" style="margin:20px;margin-top:60px;">
-
-
-        <div class="panel panel-default" id='1'>
-            <div class="panel-heading">
-                <h3 class="panel-title">条目 1</h3>
-                <span class="pull-right removeButton" style="cursor:pointer;margin-top:-20px;font-size:15px;" id="analysis-form-1-remove"><i class="glyphicon glyphicon-remove"></i></span>
-                <span class="pull-right clickable" style="cursor:pointer;margin-top:-20px;font-size:15px;margin-right:20px;"><i class="glyphicon glyphicon-chevron-up"></i></span>
+      <div class="info-content" style="margin-top:60px;padding:0 20px;">
+        <form class="form-horizontal" id="analysis-form">
+            <div class="form-group">
+                <label for="analysis-form-function" class="col-sm-2 control-label">预期功能/标准</label>
+                <div class="col-sm-10">
+                    <textarea class="form-control" rows="3" name="function" id="analysis-form-function" placeholder="预期功能/标准" style="resize:vertical;"></textarea>
+                </div>
             </div>
-            <div class="panel-body">
-                <form class="form-horizontal" id="analysis-form-1">
-                    <div class="form-group">
-                        <label for="analysis-form-1-function" class="col-sm-2 control-label">预期功能/标准</label>
-                        <div class="col-sm-10">
-                            <textarea class="form-control" rows="3" name="function" id="analysis-form-1-function" placeholder="预期功能/标准" style="resize:vertical;"></textarea>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="analysis-form-1-error" class="col-sm-2 control-label">故障模式及原因</label>
-                        <div class="col-sm-10">
-                          <textarea class="form-control" rows="3" name="error" id="analysis-form-1-error" placeholder="故障模式及原因" style="resize:vertical;"></textarea>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="analysis-form-1-impact" class="col-sm-2 control-label">故障影响</label>
-                        <div class="col-sm-10">
-                            <textarea class="form-control" rows="3" name="impact" id="analysis-form-1-impact" placeholder="故障影响" style="resize:vertical;"></textarea>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="analysis-form-1-impact-severity" class="col-sm-2 control-label">影响严重性A</label>
-                        <div class="col-sm-2">
-                          <select class="form-control" name="severity" id="analysis-form-1-impact-severity">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                            </select>
-                        </div>
-                        <label class="col-sm-1 control-label">&times;</label>
-                        <label for="analysis-form-1-impact-probability" class="col-sm-2 control-label">故障发生概率B</label>
-                        <div class="col-sm-2">
-                          <select class="form-control" name="probability" id="analysis-form-1-impact-probability">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                            </select>
-                        </div>
-                        <label class="col-sm-1 control-label">=</label>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label">风险水平</label>
-                        <label class="col-sm-2 control-label">6</label>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label">风险分级</label>
-                        <label class="col-sm-2 control-label">高 RL >= 6</label>
-                    </div>
-                    <div class="form-group">
-                        <label for="analysis-form-1-solution" class="col-sm-2 control-label">风险减缓与防范措施</label>
-                        <div class="col-sm-10">
-                            <textarea class="form-control" rows="3" name="solution" id="analysis-form-1-solution" placeholder="风险减缓与防范措施" style="resize:vertical;"></textarea>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="analysis-form-1-solution-efficiency" class="col-sm-2 control-label">措施后风险减缓值</label>
-                        <div class="col-sm-2">
-                          <select class="form-control" name="efficiency" id="analysis-form-1-solution-efficiency">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                            </select>
-                        </div>
-                    </div>
-                </form>
+            <div class="form-group">
+                <label for="analysis-form-error" class="col-sm-2 control-label">故障模式及原因</label>
+                <div class="col-sm-10">
+                  <textarea class="form-control" rows="3" name="error" id="analysis-form-error" placeholder="故障模式及原因" style="resize:vertical;"></textarea>
+                </div>
             </div>
-        </div>
-
-
+            <div class="form-group">
+                <label for="analysis-form-impact" class="col-sm-2 control-label">故障影响</label>
+                <div class="col-sm-10">
+                    <textarea class="form-control" rows="3" name="impact" id="analysis-form-impact" placeholder="故障影响" style="resize:vertical;"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="analysis-form-impact-severity" class="col-sm-2 control-label">影响严重性A</label>
+                <div class="col-sm-2">
+                  <select class="form-control" name="severity" id="analysis-form-impact-severity">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    </select>
+                </div>
+                <label class="col-sm-1 control-label">&times;</label>
+                <label for="analysis-form-impact-probability" class="col-sm-2 control-label">故障发生概率B</label>
+                <div class="col-sm-2">
+                  <select class="form-control" name="probability" id="analysis-form-impact-probability">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    </select>
+                </div>
+                <label class="col-sm-1 control-label">=</label>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">风险水平</label>
+                <label class="col-sm-2 control-label">6</label>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">风险分级</label>
+                <label class="col-sm-2 control-label">高 RL >= 6</label>
+            </div>
+            <div class="form-group">
+                <label for="analysis-form-solution" class="col-sm-2 control-label">风险减缓与防范措施</label>
+                <div class="col-sm-10">
+                    <textarea class="form-control" rows="3" name="solution" id="analysis-form-solution" placeholder="风险减缓与防范措施" style="resize:vertical;"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="analysis-form-solution-efficiency" class="col-sm-2 control-label">措施后风险减缓值</label>
+                <div class="col-sm-2">
+                  <select class="form-control" name="efficiency" id="analysis-form-solution-efficiency">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group" id="file-1">
+                <label for="analysis-form-file-1" class="col-sm-2 control-label">相关文件名称</label>
+                <div class="col-sm-9">
+                  <input class="form-control" name="file-1" id="analysis-form-file-1" placeholder="文件名称">
+                </div>
+                <div class="col-sm-1">
+                  <a href="#" style="color:black;text-decoration:none;font-size:25px;line-height:25px;" onclick="handleAddFile(1);return false;">&plus;</a>
+                </div>
+            </div>
+            <!-- <div class="form-group">
+                <label for="analysis-form-file-2" class="col-sm-2 control-label">相关文件1</label>
+                <div class="col-sm-9">
+                  <input class="form-control" name="file-2" id="analysis-form-file-2" placeholder="文件1">
+                </div>
+                <div class="col-sm-1" style="padding:0;">
+                  <a href="" style="color:black;text-decoration:none;font-size:25px;line-height:25px;margin-right:10px;" onclick="handleRemoveFile(2);return false;">&times;</a>
+                  <a href="" style="color:black;text-decoration:none;font-size:25px;line-height:25px;" onclick="handleAddFile(2);return false;">&plus;</a>
+                </div>
+            </div> -->
+        </form>
       </div>
     </div>
 
-    <!-- 面板收起展开 js 代码 -->
+    <!-- 全局变量存储文件数目 js 代码 -->
     <script type="text/javascript">
-        $(document).on('click', '.panel-heading span.clickable', function(e) {
-            var $this = $(this);
-            if (!$this.hasClass('panel-collapsed')) {
-                $this.parents('.panel').find('.panel-body').slideUp();
-                $this.addClass('panel-collapsed');
-                $this.find('i').removeClass('glyphicon-chevron-up').addClass('glyphicon-chevron-down');
-            } else {
-                $this.parents('.panel').find('.panel-body').slideDown();
-                $this.removeClass('panel-collapsed');
-                $this.find('i').removeClass('glyphicon-chevron-down').addClass('glyphicon-chevron-up');
-            }
-        })
+      var numOfFiles = 1;
     </script>
 
     <!-- 事件处理器代码 -->
@@ -144,6 +129,16 @@
         function handleSubmit() {
             // TODO: 处理表单数据并提交
             document.getElementById("rs-info-form").submit();
+        }
+
+        function handleDelete() {
+          var r = confirm('确认删除？');
+          if (r) {
+            // TODO: 删除数据库信息
+            // TODO: 删除模板数据
+            // TODO: 删除条目并返回
+            handleReturn()
+          }
         }
 
         function handleReturn() {
@@ -160,62 +155,28 @@
           }
         }
 
-        function addNewItem(templateId) {
-          var newItemName = prompt('请输入新名字', '新建条目') || '新建条目';
+        function handleRemoveFile(fileId) {
+          $('#file-' + fileId).remove()
+        }
 
-          // 修改 UI
-          var formId = Date.now().toString()
-          var newHtml = generateMockDOM(formId, newItemName, templateId);
-          if ($('.info-panels').children()) {
-            // 已有条目，添加新条目
-            $('.info-panels').last().append(newHtml)
-          } else {
-            // 没有条目，创建新条目
-            $('.info-panels').html(newHtml)
-          }
-
-          // TODO: 修改数据库信息
-          // TODO: 修改模板数据
-
-          // 添加新的click事件监听
-          $('#analysis-form-' + formId + '-remove').click(function () {
-            removeItem($(this), formId)
-          });
-
-          return false;
+        function handleAddFile(fileId) {
+          var newFileId = ++numOfFiles;
+          var newHtml = generateMockDOM(newFileId);
+          console.log($('#file-' + fileId).after(newHtml));
         }
 
         // 此方法仅生成 UI 伪 DOM
-        function generateMockDOM(id, newItemName, templateId) {
+        function generateMockDOM(fileId) {
 
-          // console.log(templateId);
+          var label = '<label for="analysis-form-file-' + fileId + '" class="col-sm-2 control-label">相关文件名称</label>';
+          var input = '<input class="form-control" name="file-' + fileId + '" id="analysis-form-file-' + fileId + '" placeholder="文件名称">';
 
-          var formId = 'analysis-form-' + id;
-
-          var heading = '<div class="panel-heading"><h3 class="panel-title">' + newItemName + '</h3><span class="pull-right removeButton" style="cursor:pointer;margin-top:-20px;font-size:15px;" id="' + formId + '-remove"><i class="glyphicon glyphicon-remove"></i></span><span class="pull-right clickable" style="cursor:pointer;margin-top:-20px;font-size:15px;margin-right:20px;"><i class="glyphicon glyphicon-chevron-up"></i></span></div>';
-
-          var functionFormGroup = '<div class="form-group"><label for="' + formId + '-function" class="col-sm-2 control-label">预期功能/标准</label><div class="col-sm-10"><textarea class="form-control" rows="3" name="function" id="' + formId + '-function" placeholder="预期功能/标准" style="resize:vertical;"></textarea></div></div>';
-          var errorFormGroup = '<div class="form-group"><label for="' + formId + '-error" class="col-sm-2 control-label">故障模式及原因</label><div class="col-sm-10"><textarea class="form-control" rows="3" name="error" id="' + formId + '-error" placeholder="故障模式及原因" style="resize:vertical;"></textarea></div></div>';
-          var impactFormGroup = '<div class="form-group"><label for="' + formId + '-impact" class="col-sm-2 control-label">故障影响</label><div class="col-sm-10"><textarea class="form-control" rows="3" name="impact" id="' + formId + '-impact" placeholder="故障影响" style="resize:vertical;"></textarea></div></div>';
-          var scoreFormGroup = '<div class="form-group"><label for="' + formId + '-impact-severity" class="col-sm-2 control-label">影响严重性A</label><div class="col-sm-2"><select class="form-control" name="severity" id="' + formId + '-impact-severity"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div><label class="col-sm-1 control-label">&times;</label><label for="' + formId + '-impact-probability" class="col-sm-2 control-label">故障发生概率B</label><div class="col-sm-2"><select class="form-control" name="probability" id="' + formId + '-impact-probability"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div><label class="col-sm-1 control-label">=</label></div>';
-          var computeLabelGroup = '<div class="form-group"><label class="col-sm-2 control-label">风险水平</label><label class="col-sm-2 control-label">6</label></div><div class="form-group"><label class="col-sm-2 control-label">风险分级</label><label class="col-sm-2 control-label">高 RL >= 6</label></div>';
-          var solutionFormGroup = '<div class="form-group"><label for="' + formId + '-solution" class="col-sm-2 control-label">风险减缓与防范措施</label><div class="col-sm-10"><textarea class="form-control" rows="3" name="solution" id="' + formId + '-solution" placeholder="风险减缓与防范措施" style="resize:vertical;"></textarea></div></div>';
-          var solutionEvaluationFormGroup = '<div class="form-group"><label for="' + formId + '-solution-efficiency" class="col-sm-2 control-label">措施后风险减缓值</label><div class="col-sm-2"><select class="form-control" name="efficiency" id="' + formId + '-solution-efficiency"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div></div>';
-
-          var newHtml = '<div class="panel panel-default" id="' + id + '">' + heading + '<div class="panel-body"><form class="form-horizontal" id="analysis-form-1">' + functionFormGroup + errorFormGroup + impactFormGroup + scoreFormGroup + computeLabelGroup + solutionFormGroup + solutionEvaluationFormGroup + '</form></div></div>';
+          var newHtml = '<div class="form-group" id="file-' + fileId + '">' + label + '<div class="col-sm-9">' + input + '</div><div class="col-sm-1" style="padding:0;"><a href="" style="color:black;text-decoration:none;font-size:25px;line-height:25px;margin-right:10px;" onclick="handleRemoveFile(' + fileId + ');return false;">&times;</a><a href="" style="color:black;text-decoration:none;font-size:25px;line-height:25px;" onclick="handleAddFile(' + fileId + ');return false;">&plus;</a></div></div>'
 
           return newHtml;
         }
     </script>
 
-    <!-- 初始化页面监听事件代码 -->
-    <script type="text/javascript">
-      // 为初始界面删除按钮添加监听事件
-      // 以 remove button id 为准
-      $('#analysis-form-1-remove').click(function () {
-            removeItem($(this), '1')
-          });
-    </script>
 </body>
 
 </html>

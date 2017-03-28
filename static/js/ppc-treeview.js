@@ -25,7 +25,7 @@ $(function() {
                 // 判断条件为 $(this).children().first().attr('id') === 'level-3' || 'level-2' || 'level-1'
                 visible: function(key, opt) {
                   var nodeLevel = $(this).children().first().attr('class');
-                  return nodeLevel === 'level-1' || nodeLevel === 'level-2' || nodeLevel === 'level-3'
+                  return nodeLevel === 'level-1' || nodeLevel === 'level-2'; // || nodeLevel === 'level-3'
                 }
             },
           }
@@ -96,9 +96,9 @@ function addSameLevelHandler (context){
       case 'level-2':
         newHtml = '<li class="ppc-treeview-node"><input type="checkbox" id="' + newNodeId.toString() + '" class="level-2" /><label for="' + newNodeId.toString() + '">' + newName + '</label><ul></ul></li>'
         break;
-      case 'level-3':
-        newHtml = '<li class="ppc-treeview-node"><input type="checkbox" id="' + newNodeId.toString() + '" class="level-3" /><label for="' + newNodeId.toString() + '">' + newName + '</label><ul></ul></li>'
-        break;
+      // case 'level-3':
+      //   newHtml = '<li class="ppc-treeview-node"><input type="checkbox" id="' + newNodeId.toString() + '" class="level-3" /><label for="' + newNodeId.toString() + '">' + newName + '</label><ul></ul></li>'
+      //   break;
       default:
         newHtml = '<li class="ppc-treeview-leaf"><a href="./">' + newName + '</a></li>'
     }
@@ -125,11 +125,12 @@ function addChildLevelHandler (context){
         newHtml = '<li class="ppc-treeview-node"><input type="checkbox" id="' + newNodeId.toString() + '" class="level-2" /><label for="' + newNodeId.toString() + '">' + newName + '</label><ul></ul></li>'
         break;
       case 'level-2':
-        newHtml = '<li class="ppc-treeview-node"><input type="checkbox" id="' + newNodeId.toString() + '" class="level-3" /><label for="' + newNodeId.toString() + '">' + newName + '</label><ul></ul></li>'
-        break;
-      case 'level-3':
         newHtml = '<li class="ppc-treeview-leaf"><a href="./">' + newName + '</a></li>'
+        // newHtml = '<li class="ppc-treeview-node"><input type="checkbox" id="' + newNodeId.toString() + '" class="level-3" /><label for="' + newNodeId.toString() + '">' + newName + '</label><ul></ul></li>'
         break;
+      // case 'level-3':
+      //   newHtml = '<li class="ppc-treeview-leaf"><a href="./">' + newName + '</a></li>'
+      //   break;
       default:
         break;
     }
@@ -152,4 +153,9 @@ function addChildLevelHandler (context){
   }
   // TODO: 添加数据库信息
   // TODO: 添加模板数据
+}
+
+// 叶子节点被单击
+function handleLeafClicked(context) {
+
 }

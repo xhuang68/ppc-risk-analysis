@@ -3,21 +3,26 @@
     display: none;
 }
 
-.ppc-treeview ul,
-.ppc-treeview li
+.ppc-treegrid ul,
+.ppc-treegrid li
 {
+    font-size: 20px;
+    /*background: grey;*/
+    /*border-bottom: 1px solid grey;*/
+    width: 100%;
     padding: 0;
+    padding: 5px 20px;
     margin: 0;
     list-style: none;
 }
 
-.ppc-treeview input
+.ppc-treegrid input
 {
     position: absolute;
     opacity: 0;
 }
 
-.ppc-treeview
+.ppc-treegrid
 {
     font: normal 11px "Segoe UI", Arial, Sans-serif;
     -moz-user-select: none;
@@ -25,51 +30,52 @@
     user-select: none;
 }
 
-.ppc-treeview a
+.ppc-treegrid a
 {
     color: #263343;
     text-decoration: none;
 }
 
-.ppc-treeview a:hover
+.ppc-treegrid a:hover
 {
     text-decoration: underline;
 }
 
-.ppc-treeview input + label + ul
+.ppc-treegrid input + label + ul
 {
     margin: 0 0 0 22px;
 }
 
-.ppc-treeview input ~ ul
+.ppc-treegrid input ~ ul
 {
     display: none;
 }
 
-.ppc-treeview label
+.ppc-treegrid label
 {
     cursor: pointer;
 }
 
-.ppc-treeview input:disabled + label
+.ppc-treegrid input:disabled + label
 {
     cursor: default;
     opacity: .6;
 }
 
-.ppc-treeview input:checked:not(:disabled) ~ ul
+.ppc-treegrid input:checked:not(:disabled) ~ ul
 {
     display: block;
 }
 
-.ppc-treeview label,
-.ppc-treeview a
+.ppc-treegrid label,
+.ppc-treegrid a
 {
-    background: url("../img/icon.png") no-repeat;
+    background: url("../img/collapse-icon.png") no-repeat;
+    background-size: 16px;
 }
 
-.ppc-treeview label,
-.ppc-treeview a
+.ppc-treegrid label,
+.ppc-treegrid a
 {
     display: inline-block;
     height: 16px;
@@ -77,24 +83,24 @@
     vertical-align: middle;
 }
 
-.ppc-treeview label
+.ppc-treegrid label
 {
     padding-left: 35px;
-    background-position: 0 -18px;
+    background-position: 0 -15px;
 }
 
-.ppc-treeview a
+.ppc-treegrid a
 {
   padding-left: 35px;
   background-position: 0 -38px;
 }
 
-.ppc-treeview input:checked + label
+.ppc-treegrid input:checked + label
 {
-    background-position: 0 2px;
+    background-position: 0 0px;
 }
 
-.ppc-treeview .ppc-treeview-leaf.active a{
+.ppc-treegrid .ppc-treegrid-leaf.active a{
   font-weight: bolder;
   font-style: italic;
   color: rgba(51, 122, 183, 255);
