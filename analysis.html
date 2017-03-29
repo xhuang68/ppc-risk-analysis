@@ -14,6 +14,31 @@
     <!-- import Bootstrap js -->
     <script src="./static/js/bootstrap.min.js"></script>
 
+    <style media="screen">
+      .info-content .ppc-info {
+        border:1px solid black;
+        padding:20px 20px;
+        height: 80px;
+        margin:auto 20px;
+        border-radius:5px;
+      }
+      .info-content .ppc-info.ppc-info-danger {
+        border-color: #D9534F;
+        background-color: rgba(217, 83, 79, 0.6);
+        color:white;
+      }
+      .info-content .ppc-info.ppc-info-success {
+        border-color: rgba(92, 184, 92, 255);
+        background-color: rgba(92, 184, 92, 0.6);
+        color:white;
+      }
+      .info-content .ppc-info.ppc-info-warning {
+        border-color: rgba(240, 173, 78, 255);
+        background-color: rgba(240, 173, 78, 0.6);
+        color:white;
+      }
+    </style>
+
 </head>
 
 <body>
@@ -35,7 +60,7 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="analysis-form-error" class="col-sm-2 control-label">故障模式及原因</label>
+                <label for="analysis-form-error" class="col-sm-2 control-label">故障模式及<br>原因</label>
                 <div class="col-sm-10">
                   <textarea class="form-control" rows="3" name="error" id="analysis-form-error" placeholder="故障模式及原因" style="resize:vertical;"></textarea>
                 </div>
@@ -46,87 +71,267 @@
                     <textarea class="form-control" rows="3" name="impact" id="analysis-form-impact" placeholder="故障影响" style="resize:vertical;"></textarea>
                 </div>
             </div>
+
+            <hr>
+
             <div class="form-group">
                 <label for="analysis-form-impact-severity" class="col-sm-2 control-label">影响严重性A</label>
                 <div class="col-sm-2">
                   <select class="form-control" name="severity" id="analysis-form-impact-severity">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
                     </select>
                 </div>
                 <label class="col-sm-1 control-label">&times;</label>
                 <label for="analysis-form-impact-probability" class="col-sm-2 control-label">故障发生概率B</label>
                 <div class="col-sm-2">
                   <select class="form-control" name="probability" id="analysis-form-impact-probability">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
                     </select>
                 </div>
                 <label class="col-sm-1 control-label">=</label>
             </div>
+
             <div class="form-group">
-                <label class="col-sm-2 control-label">风险水平</label>
-                <label class="col-sm-2 control-label">6</label>
+              <div class="col-sm-4 ppc-info ppc-info-danger" id="prompt-severity">
+                影响严重性A - 3：危及生命和财产安全、任务失败
+              </div>
+              <div class="col-sm-4 ppc-info ppc-info-warning" id="prompt-probability">
+                故障发生概率B - 3：危及生命和财产安全、任务失败
+              </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label">风险水平RL</label>
+                <label class="col-sm-2 control-label" id="analysis-form-impact-rl">6</label>
             </div>
             <div class="form-group">
                 <label class="col-sm-2 control-label">风险分级</label>
-                <label class="col-sm-2 control-label">高 RL >= 6</label>
+                <label class="col-sm-2 control-label" id="analysis-form-impact-level">RL >= 6</label>
+                <label class="col-sm-2 control-label"><span class="label label-danger" style="padding:10px 15px;" id="impact-label">高风险</span></label>
             </div>
+
+            <hr>
+
             <div class="form-group">
                 <label for="analysis-form-solution" class="col-sm-2 control-label">风险减缓与防范措施</label>
                 <div class="col-sm-10">
                     <textarea class="form-control" rows="3" name="solution" id="analysis-form-solution" placeholder="风险减缓与防范措施" style="resize:vertical;"></textarea>
                 </div>
             </div>
+
             <div class="form-group">
-                <label for="analysis-form-solution-efficiency" class="col-sm-2 control-label">措施后风险减缓值</label>
+                <label for="analysis-form-impact-severity-after" class="col-sm-2 control-label">措施后<br>影响严重性A</label>
                 <div class="col-sm-2">
-                  <select class="form-control" name="efficiency" id="analysis-form-solution-efficiency">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
+                  <select class="form-control" name="severity-after" id="analysis-form-impact-severity-after">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                  </select>
+                </div>
+                <label class="col-sm-1 control-label">&times;</label>
+                <label for="analysis-form-impact-probability-after" class="col-sm-2 control-label">措施后<br>故障发生概率B</label>
+                <div class="col-sm-2">
+                  <select class="form-control" name="probability-after" id="analysis-form-impact-probability-after">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
                     </select>
                 </div>
+                <label class="col-sm-1 control-label">=</label>
             </div>
-            <div class="form-group" id="file-1">
-                <label for="analysis-form-file-1" class="col-sm-2 control-label">相关文件名称</label>
-                <div class="col-sm-9">
-                  <input class="form-control" name="file-1" id="analysis-form-file-1" placeholder="文件名称">
-                </div>
-                <div class="col-sm-1">
-                  <a href="#" style="color:black;text-decoration:none;font-size:25px;line-height:25px;" onclick="handleAddFile(1);return false;">&plus;</a>
-                </div>
+
+            <div class="form-group">
+              <div class="col-sm-4 ppc-info ppc-info-danger" id="prompt-severity-after">
+                影响严重性A - 3：危及生命和财产安全、任务失败
+              </div>
+              <div class="col-sm-4 ppc-info ppc-info-warning" id="prompt-probability-after">
+                故障发生概率B - 3：危及生命和财产安全、任务失败
+              </div>
             </div>
-            <!-- <div class="form-group">
-                <label for="analysis-form-file-2" class="col-sm-2 control-label">相关文件1</label>
-                <div class="col-sm-9">
-                  <input class="form-control" name="file-2" id="analysis-form-file-2" placeholder="文件1">
-                </div>
-                <div class="col-sm-1" style="padding:0;">
-                  <a href="" style="color:black;text-decoration:none;font-size:25px;line-height:25px;margin-right:10px;" onclick="handleRemoveFile(2);return false;">&times;</a>
-                  <a href="" style="color:black;text-decoration:none;font-size:25px;line-height:25px;" onclick="handleAddFile(2);return false;">&plus;</a>
-                </div>
-            </div> -->
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label">措施后<br>风险水平</label>
+                <label class="col-sm-2 control-label" id="analysis-form-impact-rl-after">3</label>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">措施后<br>风险分级</label>
+                <label class="col-sm-2 control-label" id="analysis-form-impact-level-after">RL <= 3</label>
+                <label class="col-sm-2 control-label"><span class="label label-success" style="padding:10px 15px;" id="impact-label-after">低风险</span></label>
+            </div>
+
+            <hr>
+
+            <p style="color:#999999;">措施验证及确认</p>
+
+            <div class="form-group">
+              <label class="col-sm-2 control-label">
+                <input type="checkbox" id="checkbox-dq" name="dq-checked" value="1" style="float:left;margin-left:35px;">
+                DQ
+              </label>
+              <div class="col-sm-10">
+                <textarea class="form-control" rows="1" name="dq-file" id="analysis-form-dq" placeholder="DQ 相关文件" style="resize:vertical;" disabled></textarea>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-2 control-label">
+                <input type="checkbox" id="checkbox-iq" name="iq-checked" value="1" style="float:left;margin-left:35px;">
+                IQ
+              </label>
+              <div class="col-sm-10">
+                <textarea class="form-control" rows="1" name="iq-file" id="analysis-form-iq" placeholder="IQ 相关文件" style="resize:vertical;" disabled></textarea>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-2 control-label">
+                <input type="checkbox" id="checkbox-cc" name="cc-checked" value="1" style="float:left;margin-left:35px;">
+                C&C
+              </label>
+              <div class="col-sm-10">
+                <textarea class="form-control" rows="1" name="cc-file" id="analysis-form-cc" placeholder="C&C 相关文件" style="resize:vertical;" disabled></textarea>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-2 control-label">
+                <input type="checkbox" id="checkbox-oq" name="oq-checked" value="1" style="float:left;margin-left:35px;">
+                OQ
+              </label>
+              <div class="col-sm-10">
+                <textarea class="form-control" rows="1" name="oq-file" id="analysis-form-oq" placeholder="OQ 相关文件" style="resize:vertical;" disabled></textarea>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-2 control-label">
+                <input type="checkbox" id="checkbox-pq" name="pq-checked" value="1" style="float:left;margin-left:35px;">
+                PQ
+              </label>
+              <div class="col-sm-10">
+                <textarea class="form-control" rows="1" name="pq-file" id="analysis-form-pq" placeholder="PQ 相关文件" style="resize:vertical;" disabled></textarea>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-2 control-label">
+                <input type="checkbox" id="checkbox-pv" name="pv-checked" value="1" style="float:left;margin-left:35px;">
+                PV
+              </label>
+              <div class="col-sm-10">
+                <textarea class="form-control" rows="1" name="pv-file" id="analysis-form-pv" placeholder="PV 相关文件" style="resize:vertical;" disabled></textarea>
+              </div>
+            </div>
+
         </form>
       </div>
     </div>
 
-    <!-- 全局变量存储文件数目 js 代码 -->
+    <!-- 全局 js 代码 -->
     <script type="text/javascript">
-      var numOfFiles = 1;
+    // 绑定 checkbox 监听事件
+    const fileType = ['dq', 'iq', 'cc', 'oq', 'pq', 'pv'];
+    fileType.forEach(function(type) {
+      $('#checkbox-' + type).change(function() {
+        $('#analysis-form-' + type).attr('disabled',!this.checked)
+      });
+    });
+
+    // 绑定select选择事件激发概率计算
+    const selectType = ['severity', 'probability', 'severity-after', 'probability-after'];
+    selectType.forEach(function(type) {
+      $('#analysis-form-impact-' + type).on('change', function() {
+        handleImpactChange();
+        handlePromptChange(type);
+      })
+    });
+
     </script>
 
     <!-- 事件处理器代码 -->
     <script type="text/javascript">
+      // 处理提示信息
+        function handlePromptChange (selectedType) {
+          var parseType;
+          if (selectedType === 'severity-after') {
+            parseType = 'severity';
+          } else if (selectedType === 'probability-after') {
+            parseType = 'probability';
+          } else {
+            parseType = selectedType;
+          }
+          var selectedValue = $('#analysis-form-impact-' + selectedType).val();
+          var evalDict = {
+            3: {
+              classes: 'col-sm-4 ppc-info ppc-info-danger',
+              text: {
+                severity: '影响严重性A - 3：危及生命和财产安全、任务失败',
+                probability: '故障发生概率B - 3：故障经常发生'
+              }
+            },
+            2: {
+              classes: 'col-sm-4 ppc-info ppc-info-warning',
+              text: {
+                severity: '影响严重性A - 2：对任务有些影响的能力丧失',
+                probability: '故障发生概率B - 2：故障偶然发生'
+              }
+            },
+            1: {
+              classes: 'col-sm-4 ppc-info ppc-info-success',
+              text: {
+                severity: '影响严重性A - 1：较小或无影响',
+                probability: '故障发生概率B - 1：故障极少发生'
+              }
+            }
+          }
+
+          $('#prompt-' + selectedType).removeClass().addClass(evalDict[selectedValue].classes);
+          $('#prompt-' + selectedType).text(evalDict[selectedValue].text[parseType]);
+        }
+
+        // 计算影响
+        function handleImpactChange() {
+          // 处理原始影响
+          var impactNum = $('#analysis-form-impact-severity').val() * $('#analysis-form-impact-probability').val();
+          var impact = computeImpact(impactNum);
+          $('#analysis-form-impact-rl').text(impactNum);
+          $('#analysis-form-impact-level').text(impact.level);
+          $('#impact-label').removeClass().addClass(impact.labelClasses);
+          $('#impact-label').text(impact.labelText);
+
+          // 处理措施后影响
+          var impactNumAfter = $('#analysis-form-impact-severity-after').val() * $('#analysis-form-impact-probability-after').val();
+          var impactAfter = computeImpact(impactNumAfter);
+          $('#analysis-form-impact-rl-after').text(impactNumAfter);
+          $('#analysis-form-impact-level-after').text(impactAfter.level);
+          $('#impact-label-after').removeClass().addClass(impactAfter.labelClasses);
+          $('#impact-label-after').text(impactAfter.labelText);
+        }
+
+        function computeImpact (impactNum) {
+          var impact = {};
+          if (impactNum <= 2) {
+            impact.level = 'RL <= 2';
+            impact.labelClasses = 'label label-success';
+            impact.labelText = '低风险';
+          } else if (impactNum >= 6) {
+            impact.level = 'RL >= 6';
+            impact.labelClasses = 'label label-danger';
+            impact.labelText = '高风险';
+          } else {
+            impact.level = '2 < RL < 6';
+            impact.labelClasses = 'label label-warning';
+            impact.labelText = '中风险';
+          }
+          return impact;
+        }
+
         function handleSubmit() {
+            // TODO: 处理措施验证 checkbox 以及 text
             // TODO: 处理表单数据并提交
             document.getElementById("rs-info-form").submit();
         }
@@ -146,35 +351,14 @@
           location.href = './home.html';
         }
 
-        function removeItem(context, formId) {
-          var r = confirm('确认删除？');
-          if (r) {
-            $('#' + formId).remove();
-            // TODO: 删除数据库信息
-            // TODO: 删除模板数据
-          }
-        }
+    </script>
 
-        function handleRemoveFile(fileId) {
-          $('#file-' + fileId).remove()
-        }
-
-        function handleAddFile(fileId) {
-          var newFileId = ++numOfFiles;
-          var newHtml = generateMockDOM(newFileId);
-          console.log($('#file-' + fileId).after(newHtml));
-        }
-
-        // 此方法仅生成 UI 伪 DOM
-        function generateMockDOM(fileId) {
-
-          var label = '<label for="analysis-form-file-' + fileId + '" class="col-sm-2 control-label">相关文件名称</label>';
-          var input = '<input class="form-control" name="file-' + fileId + '" id="analysis-form-file-' + fileId + '" placeholder="文件名称">';
-
-          var newHtml = '<div class="form-group" id="file-' + fileId + '">' + label + '<div class="col-sm-9">' + input + '</div><div class="col-sm-1" style="padding:0;"><a href="" style="color:black;text-decoration:none;font-size:25px;line-height:25px;margin-right:10px;" onclick="handleRemoveFile(' + fileId + ');return false;">&times;</a><a href="" style="color:black;text-decoration:none;font-size:25px;line-height:25px;" onclick="handleAddFile(' + fileId + ');return false;">&plus;</a></div></div>'
-
-          return newHtml;
-        }
+    <!-- 界面初始化 -->
+    <script type="text/javascript">
+    selectType.forEach(function(type) {
+      handlePromptChange(type);
+    });
+    handleImpactChange();
     </script>
 
 </body>
