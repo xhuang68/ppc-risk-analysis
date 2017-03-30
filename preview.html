@@ -15,235 +15,289 @@
     <!-- import Bootstrap js -->
     <script src="./static/js/bootstrap.min.js"></script>
 
+    <!-- import ppc-treegrid js -->
+    <script src="./static/js/ppc-treegrid.js"></script>
+
+    <!-- 本页面 css -->
+    <style media="screen">
+        .preview-treegrid-header {
+            width: 80%;
+            margin: 0 auto;
+            margin-bottom: 20px;
+        }
+
+        .preview-treegrid-wrapper {
+            width: 80%;
+            margin: 0 auto;
+            border: 1px solid rgba(31, 47, 61, 255);
+            margin-bottom: 20px;
+        }
+
+        .preview-treegrid-header table {
+            width: 100%;
+            table-layout: fixed;
+        }
+
+        .preview-treegrid-header table th {
+            background: rgba(238, 241, 246, 255);
+            padding: 10px;
+            width: 20%;
+            text-align: center;
+        }
+
+        .preview-treegrid-header table td {
+            padding: 10px 20px;
+            word-wrap: break-word;
+            word-break: break-all;
+            text-align: left;
+        }
+
+        .report-template-header {
+            width: 100%;
+            text-align: center;
+            color: white;
+            background: rgba(0, 55, 123, 0.9);
+            height: 100px;
+            line-height: 100px;
+            margin-bottom: 20px;
+        }
+
+        .report-template-header p {
+            max-width: 80%;
+            margin: 0 auto;
+            font-size: 25px;
+        }
+
+        .report-template-footer {
+            background: rgba(0, 55, 123, 0.9);
+            height: 40px;
+            line-height: 40px;
+            width: 100%;
+            text-align: center;
+            color: white;
+        }
+
+        .report-template-footer>p {
+            font-size: 10px;
+            font-weight: 100;
+            margin-bottom: 0;
+        }
+    </style>
+
 </head>
 
 <body>
 
-  <button type="button" name="button" id="expandAllBtn" class="ppc-btn-expand" onclick="handleExpandAll()">收起全部节点</button>
+    <!-- <button type="button" name="button" id="expandAllBtn" class="ppc-btn-expand" onclick="handleExpandAll()">收起全部节点</button> -->
 
-  <!-- 开始引入 ppc-treegrid -->
-  <div class="ppc-treegrid">
-    <!-- 一级菜单 -->
-    <div class="ppc-treegrid-node level-1" id="item-0" onclick="handleCollapse('item-0')">
-      <span class="glyphicon glyphicon-menu-down collapse-icon" aria-hidden="true"></span>01 系统
+    <!-- 页眉 -->
+    <div class="report-template-header">
+        <p>芜湖康卫HP疫苗GMP车间生产与管理功能平面布置——风险评估与控制系统表</p>
     </div>
 
-    <div class="ppc-expand ppc-treegrid-parent-item-0">
-      <!-- 二级菜单 -->
-      <div class="ppc-treegrid-node level-2" id="item-0-0" onclick="handleCollapse('item-0-0')">
-        <span class="glyphicon glyphicon-menu-down collapse-icon" aria-hidden="true"></span>01 功能分区与布置
-      </div>
-
-      <div class="ppc-expand ppc-treegrid-parent-item-0-0">
-        <!-- 三级菜单 -->
-        <div class="ppc-treegrid-node level-3" id="item-0-0-0" onclick="handleCollapse('item-0-0-0')">
-          <span class="glyphicon glyphicon-menu-down collapse-icon" aria-hidden="true"></span>01 主工艺区
-        </div>
-
-        <div class="ppc-expand ppc-treegrid-parent-item-0-0-0">
-          <!-- 四级菜单 -->
-          <div class="ppc-treegrid-leave" id="item-0-0-0-0">
-            <div class="ppc-treegrid-leave-header" id=item-0-0-0-0 onclick="handleCollapse('item-0-0-0-0')">
-              <span class="glyphicon glyphicon-menu-down collapse-icon" aria-hidden="true"></span>
-              CNC级菌种储存间01244
-              <span style="font-size:10px;font-weight:normal;margin-left:40px;position:absolute;">
-                措施前
-                <span class="label label-danger">
-                  高风险
-                </span>
-              </span>
-              <span style="font-size:10px;font-weight:normal;margin-left:150px;position:absolute;">
-                措施后
-                <span class="label label-success">
-                  低风险
-                </span>
-              </span>
-            </div>
-            <div class="ppc-treegrid-leave-table ppc-treegrid-parent-item-0-0-0-0 ppc-expand">
-              <table border="1">
-                <tr>
-                  <th>预期功能</th>
-                  <th>故障模式及原因</th>
-                  <th>故障影响</th>
-                </tr>
-                <tr>
-                  <td>
-                    ①低温冰箱、传递窗安置
-                    <br>
-                    ②菌种保存与传递
-                    <br>
-                    ③CNC级控制
-                    <br>
-                    ④冰箱风冷热交换
-                    <br>
-                    ⑤低温冰箱二级负荷配电
-                  </td>
-                  <td>
-                    ①房间被活性区污染：房间送C级活性区风，排风泄入CNC走廊
-                    <br>
-                    ②房间温度超标：设计时未考虑冰箱风冷热交换需要冷量或风量配置；冷却系统供电与中央空调系统关联，空调停机后冷源中断
-                    <br>
-                    ③冰箱异常停机引起冰箱内温度超标：设计未考虑冰箱二级负荷配电、断电时间超出允许值
-                  </td>
-                  <td>
-                    ①车间生物危害不受控制，带来法规不符合性影响
-                    <br>
-                    ②长时间高温下运行会影响冰箱的工作状况，可能不能达成设定工作温度，或是冰箱寿命减损。
-                    <br>
-                    ③菌种处于不能可靠保存的风险情景。
-                  </td>
-                </tr>
-              </table>
-
-              <table border="1">
-                <tr>
-                  <th>影响严重性 A</th>
-                  <th>故障发生概率 B</th>
-                  <th>风险水平 RL = A &times; B</th>
-                  <th>风险分级</th>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>3</td>
-                  <td>9</td>
-                  <td>
-                    RL >= 6
-                    <span class="label label-danger" style="margin-left:20px;font-size:15px;font-weight:300;">
-                      高风险
-                    </span>
-                  </td>
-                </tr>
-                <tr>
-                  <th colspan="4">风险减缓与防范措施</th>
-                </tr>
-                <tr>
-                  <td colspan="4">
-                    ①采用独立CNC空调
-                    <br>
-                    ②房间增加独立冷源冷却
-                    <br>
-                    ③验证冰箱运行的最高环境温度和运行时间（在工艺验证中进行）
-                    <br>
-                    ④冰箱增加二级负荷配电
-                    <br>
-                    ⑤验证菌种保存的最高环境温度（在工艺验证中进行）
-                    <br>
-                    ⑥验证断电时冰箱内温度超标的时间（在工艺验证中进行）
-                    <br>
-                    ⑦制定二级供电切换时间规定（在工艺验证中进行）
-                  </td>
-                </tr>
-                <tr>
-                  <th>措施后影响严重性 A</th>
-                  <th>措施后故障发生概率 B</th>
-                  <th>措施后风险水平 RL = A &times; B</th>
-                  <th>措施后风险分级</th>
-                </tr>
-                <tr>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>
-                    RL <= 2
-                    <span class="label label-success" style="margin-left:20px;font-size:15px;font-weight:300;">
-                      低风险
-                    </span>
-                  </td>
-                </tr>
-              </table>
-
-              <table border="1">
-                <tr>
-                  <th colspan="8">措施验证及确认</th>
-                </tr>
-                <tr>
-                  <td>DQ</td>
-                  <td colspan="7">DQ01 - 文件名称文件名称文件名称文件名称文件名称文件名称.pdf</td>
-                </tr>
-                <tr>
-                  <td>IQ</td>
-                  <td colspan="7">IQ01 - 文件名称文件名称文件名称文件名称文件名称文件名称.pdf</td>
-                </tr>
-                <tr>
-                  <td>C&C</td>
-                  <td colspan="7">CC01 - 文件名称文件名称文件名称文件名称文件名称文件名称.pdf</td>
-                </tr>
-                <tr>
-                  <td>OQ</td>
-                  <td colspan="7">OQ01 - 文件名称文件名称文件名称文件名称文件名称文件名称.pdf</td>
-                </tr>
-                <tr>
-                  <td>PQ</td>
-                  <td colspan="7">PQ01 - 文件名称文件名称文件名称文件名称文件名称文件名称.pdf</td>
-                </tr>
-                <tr>
-                  <td>PV</td>
-                  <td colspan="7">PV01 - 文件名称文件名称文件名称文件名称文件名称文件名称.pdf</td>
-                </tr>
-              </table>
-
-            </div>
-          </div>
-        </div>
-
-        <!-- 三级菜单 -->
-        <div class="ppc-treegrid-node level-3" id="item-0-0-1" onclick="handleCollapse('item-0-0-1')">
-          <span class="glyphicon glyphicon-menu-down collapse-icon" aria-hidden="true"></span>02 辅助工艺区
-        </div>
-        <div class="ppc-expand ppc-treegrid-parent-item-0-0-1">
-          </div>
-        </div>
-
-      </div>
+    <!-- 基本信息表 -->
+    <div class="preview-treegrid-header">
+        <table border="1" bordercolor="#1F2F3D">
+            <tr>
+                <th>版本号</th>
+                <td>0A1</td>
+            </tr>
+            <tr>
+                <th>表格编号</th>
+                <td>WHKW2016-HPworkshoplayout-RACL0A1</td>
+            </tr>
+            <tr>
+                <th>系统名称</th>
+                <td>HP车间生产与管理功能平面布置</td>
+            </tr>
+            <tr>
+                <th>任务</th>
+                <td>完成HP生产与质量控制目标并符合cGMP标准</td>
+            </tr>
+            <tr>
+                <th>评估人</th>
+                <td>成都通晓生物过程技术开发管理有限公司</td>
+            </tr>
+            <tr>
+                <th>参考图/文件</th>
+                <td>附件1、2、3、4、5</td>
+            </tr>
+        </table>
     </div>
 
-  </div>
+    <div class="preview-treegrid-wrapper">
+        <!-- 开始引入 ppc-treegrid -->
+        <div class="ppc-treegrid">
+            <!-- 一级菜单 -->
+            <div class="ppc-treegrid-node level-1" id="item-0" onclick="handleCollapse('item-0')">
+                <span class="glyphicon glyphicon-menu-down collapse-icon" aria-hidden="true"></span>01 系统
+            </div>
 
-  <!-- 事件接收器 -->
-  <script type="text/javascript">
-  function handleCollapse(itemId) {
+            <div class="ppc-expand ppc-treegrid-parent-item-0">
+                <!-- 二级菜单 -->
+                <div class="ppc-treegrid-node level-2" id="item-0-0" onclick="handleCollapse('item-0-0')">
+                    <span class="glyphicon glyphicon-menu-down collapse-icon" aria-hidden="true"></span>01 功能分区与布置
+                </div>
 
-    if ($('.ppc-treegrid-parent-' + itemId).hasClass('ppc-collapse')) {
-      $('.ppc-treegrid-parent-' + itemId).removeClass('ppc-collapse').addClass('ppc-expand');
-      $('#' + itemId).find('.collapse-icon').removeClass('glyphicon-menu-right').addClass('glyphicon-menu-down');
-      $('.ppc-treegrid-parent-' + itemId).slideDown(200);
-    } else {
-      $('.ppc-treegrid-parent-' + itemId).removeClass('ppc-expand').addClass('ppc-collapse');
-      $('#' + itemId).find('.collapse-icon').removeClass('glyphicon-menu-down').addClass('glyphicon-menu-right');
-      $('.ppc-treegrid-parent-' + itemId).slideUp(200);
-    }
-  }
+                <div class="ppc-expand ppc-treegrid-parent-item-0-0">
+                    <!-- 三级菜单 -->
+                    <div class="ppc-treegrid-node level-3" id="item-0-0-0" onclick="handleCollapse('item-0-0-0')">
+                        <span class="glyphicon glyphicon-menu-down collapse-icon" aria-hidden="true"></span>01 主工艺区
+                    </div>
 
-  function handleExpandAll() {
-    if ($('#expandAllBtn').hasClass('ppc-btn-collapse')) {
-      // 更改按钮
-      $('#expandAllBtn').removeClass('ppc-btn-collapse').addClass('ppc-btn-expand');
-      $('#expandAllBtn').text('收起全部节点');
-      // 展开所有节点
-      $('.ppc-collapse').each(function () {
-        $(this).show();
-        $(this).removeClass('ppc-collapse').addClass('ppc-expand');
-      })
-      // 改变所有节点图标
-      $('.collapse-icon').each(function () {
-        $(this).removeClass('glyphicon-menu-right').addClass('glyphicon-menu-down');
-      })
-    } else {
-      // 更改按钮
-      $('#expandAllBtn').removeClass('ppc-btn-expand').addClass('ppc-btn-collapse');
-      $('#expandAllBtn').text('展开全部节点');
-      // 收起所有节点
-      $('.ppc-expand').each(function () {
-        $(this).hide();
-        $(this).removeClass('ppc-expand').addClass('ppc-collapse');
-      })
-      // 改变所有节点图标
-      $('.collapse-icon').each(function () {
-        $(this).removeClass('glyphicon-menu-down').addClass('glyphicon-menu-right');
-      })
-    }
-  }
-  </script>
+                    <div class="ppc-expand ppc-treegrid-parent-item-0-0-0">
+                        <!-- 四级菜单 -->
+                        <div class="ppc-treegrid-leave" id="item-0-0-0-0">
+                            <div class="ppc-treegrid-leave-header" id=item-0-0-0-0 onclick="handleCollapse('item-0-0-0-0')">
+                                <span class="glyphicon glyphicon-menu-down collapse-icon" aria-hidden="true"></span> CNC级菌种储存间01244
+                                <span style="font-size:10px;font-weight:normal;margin-left:40px;position:absolute;">
+                  措施前
+                  <span class="label label-danger">
+                    高风险
+                  </span>
+                                </span>
+                                <span style="font-size:10px;font-weight:normal;margin-left:150px;position:absolute;">
+                  措施后
+                  <span class="label label-success">
+                    低风险
+                  </span>
+                                </span>
+                            </div>
+                            <div class="ppc-treegrid-leave-table ppc-treegrid-parent-item-0-0-0-0 ppc-expand">
+                                <table border="1">
+                                    <tr>
+                                        <th>预期功能</th>
+                                        <th>故障模式及原因</th>
+                                        <th>故障影响</th>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            ①低温冰箱、传递窗安置
+                                            <br> ②菌种保存与传递
+                                            <br> ③CNC级控制
+                                            <br> ④冰箱风冷热交换
+                                            <br> ⑤低温冰箱二级负荷配电
+                                        </td>
+                                        <td>
+                                            ①房间被活性区污染：房间送C级活性区风，排风泄入CNC走廊
+                                            <br> ②房间温度超标：设计时未考虑冰箱风冷热交换需要冷量或风量配置；冷却系统供电与中央空调系统关联，空调停机后冷源中断
+                                            <br> ③冰箱异常停机引起冰箱内温度超标：设计未考虑冰箱二级负荷配电、断电时间超出允许值
+                                        </td>
+                                        <td>
+                                            ①车间生物危害不受控制，带来法规不符合性影响
+                                            <br> ②长时间高温下运行会影响冰箱的工作状况，可能不能达成设定工作温度，或是冰箱寿命减损。
+                                            <br> ③菌种处于不能可靠保存的风险情景。
+                                        </td>
+                                    </tr>
+                                </table>
+
+                                <table border="1">
+                                    <tr>
+                                        <th>影响严重性 A</th>
+                                        <th>故障发生概率 B</th>
+                                        <th>风险水平 RL = A &times; B</th>
+                                        <th>风险分级</th>
+                                    </tr>
+                                    <tr>
+                                        <td>3 - 危及生命和财产安全、任务失败</td>
+                                        <td>3 - 故障经常发生</td>
+                                        <td>9</td>
+                                        <td>
+                                            RL >= 6
+                                            <span class="label label-danger" style="margin-left:20px;font-size:15px;font-weight:300;">
+                        高风险
+                      </span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th colspan="4">风险减缓与防范措施</th>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="4">
+                                            ①采用独立CNC空调
+                                            <br> ②房间增加独立冷源冷却
+                                            <br> ③验证冰箱运行的最高环境温度和运行时间（在工艺验证中进行）
+                                            <br> ④冰箱增加二级负荷配电
+                                            <br> ⑤验证菌种保存的最高环境温度（在工艺验证中进行）
+                                            <br> ⑥验证断电时冰箱内温度超标的时间（在工艺验证中进行）
+                                            <br> ⑦制定二级供电切换时间规定（在工艺验证中进行）
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>措施后影响严重性 A</th>
+                                        <th>措施后故障发生概率 B</th>
+                                        <th>措施后风险水平 RL = A &times; B</th>
+                                        <th>措施后风险分级</th>
+                                    </tr>
+                                    <tr>
+                                        <td>1 - 较小或无影响</td>
+                                        <td>1 - 故障极少发生</td>
+                                        <td>1</td>
+                                        <td>
+                                            RL
+                                            <=2 <span class="label label-success" style="margin-left:20px;font-size:15px;font-weight:300;">
+                                                低风险
+                                                </span>
+                                        </td>
+                                    </tr>
+                                </table>
+
+                                <table border="1">
+                                    <tr>
+                                        <th colspan="8">措施验证及确认</th>
+                                    </tr>
+                                    <tr>
+                                        <td>DQ</td>
+                                        <td colspan="7">DQ01 - 文件名称文件名称文件名称文件名称文件名称文件名称.pdf</td>
+                                    </tr>
+                                    <tr>
+                                        <td>IQ</td>
+                                        <td colspan="7">IQ01 - 文件名称文件名称文件名称文件名称文件名称文件名称.pdf</td>
+                                    </tr>
+                                    <tr>
+                                        <td>C&C</td>
+                                        <td colspan="7">CC01 - 文件名称文件名称文件名称文件名称文件名称文件名称.pdf</td>
+                                    </tr>
+                                    <tr>
+                                        <td>OQ</td>
+                                        <td colspan="7">OQ01 - 文件名称文件名称文件名称文件名称文件名称文件名称.pdf</td>
+                                    </tr>
+                                    <tr>
+                                        <td>PQ</td>
+                                        <td colspan="7">PQ01 - 文件名称文件名称文件名称文件名称文件名称文件名称.pdf</td>
+                                    </tr>
+                                    <tr>
+                                        <td>PV</td>
+                                        <td colspan="7">PV01 - 文件名称文件名称文件名称文件名称文件名称文件名称.pdf</td>
+                                    </tr>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 三级菜单 -->
+                    <div class="ppc-treegrid-node level-3" id="item-0-0-1" onclick="handleCollapse('item-0-0-1')">
+                        <span class="glyphicon glyphicon-menu-down collapse-icon" aria-hidden="true"></span>02 辅助工艺区
+                    </div>
+                    <div class="ppc-expand ppc-treegrid-parent-item-0-0-1">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    </div>
+
+    <!-- 页脚 -->
+    <div class="report-template-footer">
+        <p>Powered by
+            <span style="position:relative;top:-1px;margin-left:3px">
+        <img src="./static/img/logo_white.svg" alt="" width="60">
+      </span>
+        </p>
+    </div>
 </body>
 
 </html>

@@ -28,6 +28,7 @@
 }
 .ppc-treegrid .ppc-treegrid-leave-table {
   padding: 20px 30px;
+  border-bottom: 1px solid rgba(229, 229, 229, 255);
 }
 .ppc-treegrid .ppc-treegrid-leave-table table {
   width: 100%;
