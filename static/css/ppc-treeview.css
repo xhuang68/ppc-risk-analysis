@@ -96,6 +96,7 @@
 
 .ppc-treeview .ppc-treeview-leaf.active a{
   font-weight: bolder;
+  font-size: 15px;
   font-style: italic;
-  color: rgba(51, 122, 183, 255);
+  color: rgb(255, 47, 0);
 }

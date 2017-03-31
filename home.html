@@ -71,9 +71,12 @@
               </div>
             </div>
 
-            <div class="col-sm-6 ppc-risk-analysis-content-right" style="width:50%;height:100%;display:inline;vertical-align:top;overflow:scroll;padding:0;">
-              <div class="right-header" style="position:fixed;z-index:3;height:50px;width:383px;color:white;background:rgba(255, 255, 255, 0.8);text-align:center;line-height:50px;text-decoration: none;">
-                <div class="dropdown" style="display:inline-block;">
+            <div class="col-sm-6 ppc-risk-analysis-content-right" style="width:50%;height:100%;display:inline;overflow:scroll;padding:0;">
+              <div class="right-header" style="position:fixed;z-index:3;height:50px;width:383px;color:white;background:rgba(238, 241, 246, 0.8);text-align:center;line-height:50px;text-decoration: none;">
+                <div class="" style="display:inline-block;width:270px;overflow:scroll;">
+                  <p class="right-header-breadcrumb" style="margin-bottom:0;color:black;white-space:nowrap;vertical-align:top;" title="1系统1/1功能分区与布置/01主工艺分区">01主工艺分区</p>
+                </div>
+                <div class="dropdown" style="display:inline-block;width:80px;vertical-align:top;">
                   <button id="dLabel" class="btn btn-default btn-sm" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="">
                     新建条目
                     <span class="caret"></span>
@@ -87,7 +90,82 @@
                 </div>
               </div>
 
-              <div class="right-lists" style="margin:0 15px;margin-top:50px;">
+              <div class="right-lists" style="margin:0 15px;margin-top:70px;">
+                <div class="list-group">
+                  <a href="./analysis.html" class="list-group-item">
+                    <p class="list-group-item-heading">功能名称</p>
+                    <hr style="margin:0px;">
+                    <p class="list-group-item-text" style="margin:15px 0;">
+                      风险水平
+                      <span style="margin-left:52px;font-size:20px;font-weight:500;">
+                        RL >= 6
+                      </span>
+                      <span class="label label-danger" style="margin-left:20px;font-size:15px;font-weight:300;">
+                        高风险
+                      </span>
+                    </p>
+
+                    <p class="list-group-item-text" style="margin:15px 0;">
+                      措施后风险水平
+                      <span style="margin-left:10px;font-size:20px;font-weight:500;">
+                        RL <= 2
+                      </span>
+                      <span class="label label-success" style="margin-left:20px;font-size:15px;font-weight:300;">
+                        低风险
+                      </span>
+                    </p>
+                  </a>
+                </div>
+                <div class="list-group">
+                  <a href="./analysis.html" class="list-group-item">
+                    <p class="list-group-item-heading">功能名称</p>
+                    <hr style="margin:0px;">
+                    <p class="list-group-item-text" style="margin:15px 0;">
+                      风险水平
+                      <span style="margin-left:52px;font-size:20px;font-weight:500;">
+                        RL >= 6
+                      </span>
+                      <span class="label label-danger" style="margin-left:20px;font-size:15px;font-weight:300;">
+                        高风险
+                      </span>
+                    </p>
+
+                    <p class="list-group-item-text" style="margin:15px 0;">
+                      措施后风险水平
+                      <span style="margin-left:10px;font-size:20px;font-weight:500;">
+                        RL <= 2
+                      </span>
+                      <span class="label label-success" style="margin-left:20px;font-size:15px;font-weight:300;">
+                        低风险
+                      </span>
+                    </p>
+                  </a>
+                </div>
+                <div class="list-group">
+                  <a href="./analysis.html" class="list-group-item">
+                    <p class="list-group-item-heading">功能名称</p>
+                    <hr style="margin:0px;">
+                    <p class="list-group-item-text" style="margin:15px 0;">
+                      风险水平
+                      <span style="margin-left:52px;font-size:20px;font-weight:500;">
+                        RL >= 6
+                      </span>
+                      <span class="label label-danger" style="margin-left:20px;font-size:15px;font-weight:300;">
+                        高风险
+                      </span>
+                    </p>
+
+                    <p class="list-group-item-text" style="margin:15px 0;">
+                      措施后风险水平
+                      <span style="margin-left:10px;font-size:20px;font-weight:500;">
+                        RL <= 2
+                      </span>
+                      <span class="label label-success" style="margin-left:20px;font-size:15px;font-weight:300;">
+                        低风险
+                      </span>
+                    </p>
+                  </a>
+                </div>
                 <div class="list-group">
                   <a href="./analysis.html" class="list-group-item">
                     <p class="list-group-item-heading">功能名称</p>
@@ -176,6 +254,12 @@
       }
 
       function handleLeafClicked(itemId) {
+        var level2 = findParentItemId(itemId);
+        var level1= findParentItemId(level2);
+        var breadcrumb = $('#' + level1).next().text() + '/' + $('#' + level2).next().text() + '/' + $('#' + itemId).text();
+        $('.right-header-breadcrumb').text($('#' + itemId).text());
+        $('.right-header-breadcrumb').attr('title', breadcrumb);
+
         if (selectedItemId) {
           $('#' + selectedItemId).removeClass('active');
         }
@@ -183,6 +267,12 @@
         $('#' + itemId).addClass('active');
 
         // TODO: 传递数据到列表页面
+      }
+
+      function findParentItemId(itemId) {
+        var temp = itemId.split('')
+        temp.splice(itemId.length - 2, 2);
+        return temp.join('');
       }
     </script>
 </body>
