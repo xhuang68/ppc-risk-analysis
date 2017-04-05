@@ -245,10 +245,84 @@
     const selectType = ['severity', 'probability', 'severity-after', 'probability-after'];
     selectType.forEach(function(type) {
       $('#analysis-form-impact-' + type).on('change', function() {
+        /* v7 修改部分 B 为措施前严重性和概率选择添加监听*/
+        if (type === 'severity' || type === 'probability') {
+          initinvalidValue(type, [1, 2, 3]);
+          handlePromptChange(type + '-after');
+        }
+        /* END v7 修改部分 B 为措施前严重性和概率选择添加监听*/
         handleImpactChange();
         handlePromptChange(type);
       })
     });
+
+    /* v7 修改部分 C 为措施一栏添加监听 */
+    $('#analysis-form-solution').on('change', function() {
+      initinvalidValue('severity', [1, 2, 3]);
+      initinvalidValue('probability', [1, 2, 3]);
+    })
+    /* END v7 修改部分 C 为措施一栏添加监听 */
+
+    /* v7 修改部分 A 严重性A和概率B的初始值*/
+    // initValue 方法可为措施后严重性A和措施后概率B赋初始值
+    // type 是 ['severity', 'probability'] 其中一项
+    // value 是 值 如 1
+    // candidate 是 可选值数组 如 [1,2,3] 代表从 1, 2 或 3 中选择
+    function initinvalidValue(type, candidate) {
+      // 清除所有已有option属性
+      enableOptions(type);
+      // 获取措施前风险评分
+      var beforeValue = $('#analysis-form-impact-' + type).val();
+      // 计算所有小于措施前的风险评分
+      var invalidValue = candidate.filter(function(v){
+        return v > beforeValue;
+      });
+      // 为措施后风险评分赋值，默认值措施前风险值
+      $('#analysis-form-impact-' + type + '-after').val(beforeValue);
+      // 使非法值不可选
+      disableOptions(invalidValue, type);
+      // 判断是否有措施输入
+      // 若无，所有值不可选
+      if ($('#analysis-form-solution').val() === '') {
+        invalidValue = candidate.filter(function(v){
+          return v != beforeValue;
+        });
+        disableOptions(invalidValue, type);
+      }
+    }
+
+    // 此方法为 initinvalidValue 的帮助方法
+    // 使 invalidValue 中的所有值不可选
+    function disableOptions(invalidValue, type) {
+      invalidValue.forEach(function(v) {
+        $('#analysis-form-impact-' + type + '-after').find('option').each(function(){
+          if ($(this).val() == v) {
+            $(this).attr('disabled', true);
+          }
+        });
+      });
+    }
+
+    // 此方法为 initinvalidValue 的帮助方法
+    // 使所有值可选
+    function enableOptions(type) {
+      $('#analysis-form-impact-' + type + '-after').find('option').each(function(){
+        $(this).attr('disabled', false);
+      })
+    }
+
+    // v7 TODO:
+    // 新建条目时，初始化严重性A和概率B值，均为3
+    // 若非新建，需从后台读取数值并修改
+    // 逐条初始化
+    $('#analysis-form-impact-severity').val(2); // 措施前 A 值
+    $('#analysis-form-impact-probability').val(2); // 措施前 B 值
+    // 自动初始化措施后的AB值
+    // 可更改可选值数组
+    initinvalidValue('severity', [1, 2, 3]);
+    initinvalidValue('probability', [1, 2, 3]);
+
+    /* END v7 修改部分 A 严重性A和概率B的初始值*/
 
     </script>
 
