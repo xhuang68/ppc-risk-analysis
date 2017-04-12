@@ -18,7 +18,7 @@
       .info-content .ppc-info {
         border:1px solid black;
         padding:20px 20px;
-        height: 80px;
+        height: 105px;
         margin:auto 20px;
         border-radius:5px;
       }
@@ -46,36 +46,36 @@
 
       <div class="info-header" style="width:768px;height:40px;line-height:40px;padding-left:20px;background:rgba(153, 204, 255, 0.8);position:fixed;z-index:2;">
         <p style="display:inline-block;font-weight:bolder;">条目 1</p>
-        <button class="btn btn-default btn-sm" type="button" name="button" onclick="handleReturn()" style="float:right;margin-top:5px;margin-right:20px;">返回</button>
-        <button class="btn btn-default btn-sm" type="button" name="button" onclick="handleDelete()" style="float:right;margin-top:5px;margin-right:10px;">删除</button>
-        <button class="btn btn-default btn-sm" type="button" name="button" onclick="handleSubmit()" style="float:right;margin-top:5px;margin-right:10px;">提交</button>
+        <button class="btn btn-default btn-sm" type="button" name="button" onclick="handleReturn()" style="float:right;margin-top:5px;margin-right:20px;">返回 Back</button>
+        <button class="btn btn-default btn-sm" type="button" name="button" onclick="handleDelete()" style="float:right;margin-top:5px;margin-right:10px;">删除 Delete</button>
+        <button class="btn btn-default btn-sm" type="button" name="button" onclick="handleSubmit()" style="float:right;margin-top:5px;margin-right:10px;">提交 Submit</button>
       </div>
 
       <div class="info-content" style="margin-top:60px;padding:0 20px;">
         <form class="form-horizontal" id="analysis-form">
             <div class="form-group">
-                <label for="analysis-form-function" class="col-sm-2 control-label">预期功能/标准</label>
+                <label for="analysis-form-function" class="col-sm-2 control-label" style="padding:0;">预期功能/标准<br>Expected Function/Standard</label>
                 <div class="col-sm-10">
-                    <textarea class="form-control" rows="3" name="function" id="analysis-form-function" placeholder="预期功能/标准" style="resize:vertical;"></textarea>
+                    <textarea class="form-control" rows="3" name="function" id="analysis-form-function" placeholder="预期功能/标准 Expected Function/Standard" style="resize:vertical;"></textarea>
                 </div>
             </div>
             <div class="form-group">
-                <label for="analysis-form-error" class="col-sm-2 control-label">故障模式及<br>原因</label>
+                <label for="analysis-form-error" class="col-sm-2 control-label" style="padding:0;">故障模式及原因<br>Failure Mode & Cause</label>
                 <div class="col-sm-10">
-                  <textarea class="form-control" rows="3" name="error" id="analysis-form-error" placeholder="故障模式及原因" style="resize:vertical;"></textarea>
+                  <textarea class="form-control" rows="3" name="error" id="analysis-form-error" placeholder="故障模式及原因 Failure Mode & Cause" style="resize:vertical;"></textarea>
                 </div>
             </div>
             <div class="form-group">
-                <label for="analysis-form-impact" class="col-sm-2 control-label">故障影响</label>
+                <label for="analysis-form-impact" class="col-sm-2 control-label" style="padding:0;">故障影响<br>Failure Impact</label>
                 <div class="col-sm-10">
-                    <textarea class="form-control" rows="3" name="impact" id="analysis-form-impact" placeholder="故障影响" style="resize:vertical;"></textarea>
+                    <textarea class="form-control" rows="3" name="impact" id="analysis-form-impact" placeholder="故障影响 Failure Impact" style="resize:vertical;"></textarea>
                 </div>
             </div>
 
             <hr>
 
             <div class="form-group">
-                <label for="analysis-form-impact-severity" class="col-sm-2 control-label">影响严重性A</label>
+                <label for="analysis-form-impact-severity" class="col-sm-2 control-label" style="padding:0;">影响严重性A<br>Impact Severity A</label>
                 <div class="col-sm-2">
                   <select class="form-control" name="severity" id="analysis-form-impact-severity">
                     <option value="1">1</option>
@@ -84,7 +84,7 @@
                     </select>
                 </div>
                 <label class="col-sm-1 control-label">&times;</label>
-                <label for="analysis-form-impact-probability" class="col-sm-2 control-label">故障发生概率B</label>
+                <label for="analysis-form-impact-probability" class="col-sm-4 control-label" style="padding:0;">故障发生概率B<br>Likelihood of Failure Occurrence B</label>
                 <div class="col-sm-2">
                   <select class="form-control" name="probability" id="analysis-form-impact-probability">
                     <option value="1">1</option>
@@ -97,34 +97,34 @@
 
             <div class="form-group">
               <div class="col-sm-4 ppc-info ppc-info-danger" id="prompt-severity">
-                影响严重性A - 3：危及生命和财产安全、任务失败
+                <p>影响严重性A - 3：危及生命和财产安全、任务失败</p>
               </div>
               <div class="col-sm-4 ppc-info ppc-info-warning" id="prompt-probability">
                 故障发生概率B - 3：危及生命和财产安全、任务失败
               </div>
             </div>
 
-            <div class="form-group">
-                <label class="col-sm-2 control-label">风险水平RL</label>
-                <label class="col-sm-2 control-label" id="analysis-form-impact-rl">6</label>
+            <div class="form-group" style="display:flex;align-items:center;">
+                <label class="col-sm-2 control-label" style="padding:0;">风险水平 RL<br>Risk Level</label>
+                <label class="col-sm-2 control-label" style="padding:0;" id="analysis-form-impact-rl">6</label>
             </div>
-            <div class="form-group">
-                <label class="col-sm-2 control-label">风险分级</label>
-                <label class="col-sm-2 control-label" id="analysis-form-impact-level">RL >= 6</label>
-                <label class="col-sm-2 control-label"><span class="label label-danger" style="padding:10px 15px;" id="impact-label">高风险</span></label>
+            <div class="form-group" style="display:flex;align-items:center;">
+                <label class="col-sm-2 control-label" style="padding:0;">风险分级<br>Risk Grade</label>
+                <label class="col-sm-2 control-label" style="padding:0;" id="analysis-form-impact-level">RL >= 6</label>
+                <label class="col-sm-2 control-label" style="padding:0;"><span class="label label-danger" style="padding:10px 15px;margin-left:20px;" id="impact-label">高风险</span></label>
             </div>
 
             <hr>
 
             <div class="form-group">
-                <label for="analysis-form-solution" class="col-sm-2 control-label">风险减缓与防范措施</label>
+                <label for="analysis-form-solution" class="col-sm-2 control-label" style="padding:0;">风险减缓与防范措施<br>Mitigation Strategy</label>
                 <div class="col-sm-10">
-                    <textarea class="form-control" rows="3" name="solution" id="analysis-form-solution" placeholder="风险减缓与防范措施" style="resize:vertical;"></textarea>
+                    <textarea class="form-control" rows="3" name="solution" id="analysis-form-solution" placeholder="风险减缓与防范措施 Mitigation Strategy" style="resize:vertical;"></textarea>
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="analysis-form-impact-severity-after" class="col-sm-2 control-label">措施后<br>影响严重性A</label>
+                <label for="analysis-form-impact-severity-after" class="col-sm-2 control-label" style="padding:0;">措施后影响严重性A<br>Impact Severity A</label>
                 <div class="col-sm-2">
                   <select class="form-control" name="severity-after" id="analysis-form-impact-severity-after">
                     <option value="1">1</option>
@@ -133,7 +133,7 @@
                   </select>
                 </div>
                 <label class="col-sm-1 control-label">&times;</label>
-                <label for="analysis-form-impact-probability-after" class="col-sm-2 control-label">措施后<br>故障发生概率B</label>
+                <label for="analysis-form-impact-probability-after" class="col-sm-4 control-label" style="padding:0;">措施后故障发生概率B<br>Likelihood of Failure Occurrence B</label>
                 <div class="col-sm-2">
                   <select class="form-control" name="probability-after" id="analysis-form-impact-probability-after">
                     <option value="1">1</option>
@@ -153,22 +153,22 @@
               </div>
             </div>
 
-            <div class="form-group">
-                <label class="col-sm-2 control-label">措施后<br>风险水平</label>
-                <label class="col-sm-2 control-label" id="analysis-form-impact-rl-after">3</label>
+            <div class="form-group" style="display:flex;align-items:center;">
+                <label class="col-sm-2 control-label" style="padding:0;">措施后风险水平 RL<br>Risk Level After</label>
+                <label class="col-sm-2 control-label" style="padding:0;" id="analysis-form-impact-rl-after">3</label>
             </div>
-            <div class="form-group">
-                <label class="col-sm-2 control-label">措施后<br>风险分级</label>
-                <label class="col-sm-2 control-label" id="analysis-form-impact-level-after">RL <= 3</label>
-                <label class="col-sm-2 control-label"><span class="label label-success" style="padding:10px 15px;" id="impact-label-after">低风险</span></label>
+            <div class="form-group" style="display:flex;align-items:center;">
+                <label class="col-sm-2 control-label" style="padding:0;">措施后风险分级<br>Risk Grade After</label>
+                <label class="col-sm-2 control-label" style="padding:0;" id="analysis-form-impact-level-after">RL <= 3</label>
+                <label class="col-sm-2 control-label" style="padding:0;"><span class="label label-success" style="padding:10px 15px;margin-left:20px;" id="impact-label-after">低风险</span></label>
             </div>
 
             <hr>
 
-            <p style="color:#999999;">措施验证及确认</p>
+            <p style="color:#999999;">措施验证及确认<br>Validation and Confirmation for Measures</p>
 
             <div class="form-group">
-              <label class="col-sm-2 control-label">
+              <label class="col-sm-2 control-label" style="padding:0;">
                 <input type="checkbox" id="checkbox-dq" name="dq-checked" value="1" style="float:left;margin-left:35px;">
                 DQ
               </label>
@@ -178,7 +178,7 @@
             </div>
 
             <div class="form-group">
-              <label class="col-sm-2 control-label">
+              <label class="col-sm-2 control-label" style="padding:0;">
                 <input type="checkbox" id="checkbox-iq" name="iq-checked" value="1" style="float:left;margin-left:35px;">
                 IQ
               </label>
@@ -188,7 +188,7 @@
             </div>
 
             <div class="form-group">
-              <label class="col-sm-2 control-label">
+              <label class="col-sm-2 control-label" style="padding:0;">
                 <input type="checkbox" id="checkbox-cc" name="cc-checked" value="1" style="float:left;margin-left:35px;">
                 C&C
               </label>
@@ -198,7 +198,7 @@
             </div>
 
             <div class="form-group">
-              <label class="col-sm-2 control-label">
+              <label class="col-sm-2 control-label" style="padding:0;">
                 <input type="checkbox" id="checkbox-oq" name="oq-checked" value="1" style="float:left;margin-left:35px;">
                 OQ
               </label>
@@ -208,7 +208,7 @@
             </div>
 
             <div class="form-group">
-              <label class="col-sm-2 control-label">
+              <label class="col-sm-2 control-label" style="padding:0;">
                 <input type="checkbox" id="checkbox-pq" name="pq-checked" value="1" style="float:left;margin-left:35px;">
                 PQ
               </label>
@@ -218,7 +218,7 @@
             </div>
 
             <div class="form-group">
-              <label class="col-sm-2 control-label">
+              <label class="col-sm-2 control-label" style="padding:0;">
                 <input type="checkbox" id="checkbox-pv" name="pv-checked" value="1" style="float:left;margin-left:35px;">
                 PV
               </label>
@@ -260,6 +260,9 @@
     $('#analysis-form-solution').on('change', function() {
       initinvalidValue('severity', [1, 2, 3]);
       initinvalidValue('probability', [1, 2, 3]);
+      handleImpactChange();
+      handlePromptChange('severity-after');
+      handlePromptChange('probability-after');
     })
     /* END v7 修改部分 C 为措施一栏添加监听 */
 
@@ -315,8 +318,8 @@
     // 新建条目时，初始化严重性A和概率B值，均为3
     // 若非新建，需从后台读取数值并修改
     // 逐条初始化
-    $('#analysis-form-impact-severity').val(2); // 措施前 A 值
-    $('#analysis-form-impact-probability').val(2); // 措施前 B 值
+    $('#analysis-form-impact-severity').val(3); // 措施前 A 值
+    $('#analysis-form-impact-probability').val(3); // 措施前 B 值
     // 自动初始化措施后的AB值
     // 可更改可选值数组
     initinvalidValue('severity', [1, 2, 3]);
@@ -343,22 +346,22 @@
             3: {
               classes: 'col-sm-4 ppc-info ppc-info-danger',
               text: {
-                severity: '影响严重性A - 3：危及生命和财产安全、任务失败',
-                probability: '故障发生概率B - 3：故障经常发生'
+                severity: 'A - 3：危及生命和财产安全，任务失败 Endanger Life and Property Safety, Mission Failure',
+                probability: 'B - 3：故障经常发生 High Probability of Failure Occurrence'
               }
             },
             2: {
               classes: 'col-sm-4 ppc-info ppc-info-warning',
               text: {
-                severity: '影响严重性A - 2：对任务有些影响的能力丧失',
-                probability: '故障发生概率B - 2：故障偶然发生'
+                severity: 'A - 2：对任务有些影响的能力丧失',
+                probability: 'B - 2：故障偶然发生 Medium Probability of Failure Occurrence'
               }
             },
             1: {
               classes: 'col-sm-4 ppc-info ppc-info-success',
               text: {
-                severity: '影响严重性A - 1：较小或无影响',
-                probability: '故障发生概率B - 1：故障极少发生'
+                severity: 'A - 1：较小或无影响 Less or No Impact',
+                probability: 'B - 1：故障极少发生 Low Probability of Failure Occurrence'
               }
             }
           }
@@ -391,15 +394,15 @@
           if (impactNum <= 2) {
             impact.level = 'RL <= 2';
             impact.labelClasses = 'label label-success';
-            impact.labelText = '低风险';
+            impact.labelText = '低风险 Low Risk';
           } else if (impactNum >= 6) {
             impact.level = 'RL >= 6';
             impact.labelClasses = 'label label-danger';
-            impact.labelText = '高风险';
+            impact.labelText = '高风险 High Risk';
           } else {
             impact.level = '2 < RL < 6';
             impact.labelClasses = 'label label-warning';
-            impact.labelText = '中风险';
+            impact.labelText = '中风险 Mid Risk';
           }
           return impact;
         }

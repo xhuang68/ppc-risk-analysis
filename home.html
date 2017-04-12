@@ -27,11 +27,11 @@
 <body>
     <div id="home-wrapper" style="height:512px;width:768px;margin:0 auto;border:1px solid #999999;">
         <div class="ppc-risk-analysis-header" style="height:10%;border-bottom:1px solid #999999;padding:10px;">
-          <button class="btn btn-default btn-sm" type="button" name="button" onclick="handleBasicInfo()">基本信息</button>
-          <button class="btn btn-default btn-sm" type="button" name="button" onclick="handleDictEdit()">编辑字典</button>
-          <button class="btn btn-default btn-sm" type="button" name="button" onclick="handleAddRoot()">添加根数据</button>
-          <button class="btn btn-default btn-sm" type="button" name="button" onclick="handlePreview()">预览</button>
-          <button class="btn btn-default btn-sm" type="button" name="button" onclick="handleExport()">导出</button>
+          <button class="btn btn-default btn-sm" type="button" name="button" onclick="handleBasicInfo()">基本信息 Info</button>
+          <button class="btn btn-default btn-sm" type="button" name="button" onclick="handleDictEdit()">编辑字典 Config</button>
+          <button class="btn btn-default btn-sm" type="button" name="button" onclick="handleAddRoot()">添加根数据 Add Root Data</button>
+          <button class="btn btn-default btn-sm" type="button" name="button" onclick="handlePreview()">预览 Preview</button>
+          <button class="btn btn-default btn-sm" type="button" name="button" onclick="handleExport()">导出 Export</button>
         </div>
         <div class="ppc-risk-analysis-content-wrapper" style="height:90%;vertical-align:top;">
 
@@ -73,19 +73,19 @@
 
             <div class="col-sm-6 ppc-risk-analysis-content-right" style="width:50%;height:100%;display:inline;overflow:scroll;padding:0;">
               <div class="right-header" style="position:fixed;z-index:3;height:50px;width:383px;color:white;background:rgba(238, 241, 246, 0.8);text-align:center;line-height:50px;text-decoration: none;">
-                <div class="" style="display:inline-block;width:270px;overflow:scroll;">
+                <div class="" style="display:inline-block;width:240px;overflow:scroll;">
                   <p class="right-header-breadcrumb" style="margin-bottom:0;color:black;white-space:nowrap;vertical-align:top;" title="1系统1/1功能分区与布置/01主工艺分区">01主工艺分区</p>
                 </div>
-                <div class="dropdown" style="display:inline-block;width:80px;vertical-align:top;">
+                <div class="dropdown" style="display:inline-block;width:110px;vertical-align:top;">
                   <button id="dLabel" class="btn btn-default btn-sm" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="">
-                    新建条目
+                    新建条目 New
                     <span class="caret"></span>
                   </button>
                   <ul class="dropdown-menu" aria-labelledby="dLabel">
-                    <li><a href="#" onclick="handleAddItem(0);return false;">空白模板</a></li>
-                    <li><a href="#" onclick="handleAddItem(1);return false;"=>模板名称1</a></li>
-                    <li><a href="#" onclick="handleAddItem(2);return false;">模板名称2</a></li>
-                    <li><a href="#" onclick="handleAddItem(3);return false;">模板名称3</a></li>
+                    <li><a href="#" onclick="handleAddItem(0);return false;">空白模板 Empty</a></li>
+                    <li><a href="#" onclick="handleAddItem(1);return false;">模板名称1 Template 1</a></li>
+                    <li><a href="#" onclick="handleAddItem(2);return false;">模板名称2 Template 2</a></li>
+                    <li><a href="#" onclick="handleAddItem(3);return false;">模板名称3 Template 3</a></li>
                   </ul>
                 </div>
               </div>
